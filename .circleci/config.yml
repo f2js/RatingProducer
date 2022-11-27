@@ -1,8 +1,4 @@
 version: 2.1
-executors:
-  java17:
-    docker:
-      - image: 'cimg/openjdk:17.0'
 orbs:
   maven: circleci/maven@1.4.0
 jobs:
@@ -12,12 +8,13 @@ jobs:
     environment:
       IMAGE_NAME: f2js/rating-producer
     working_directory: ~/app
-    executor: java17
     steps:
       - checkout
       - setup_remote_docker
       - run:
           command: sudo apt update
+      - run:
+          command: apt install openjdk-17-jdk openjdk-17-jre
       - run:
           command: sudo apt install maven
       - run:
