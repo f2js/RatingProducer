@@ -3,6 +3,6 @@ server:
 spring:
   kafka:
     producer:
-      bootstrap-servers: ${CLUSER_IP}:9092
+      bootstrap-servers: ${CLUSTER_IP}:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer

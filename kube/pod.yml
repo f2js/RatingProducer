@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ci-cd-test
+  name: rating-producer
   labels:
     app: web
 spec:
