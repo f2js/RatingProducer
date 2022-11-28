@@ -12,4 +12,4 @@ spec:
       port: 9000 # - port exposed internally in the cluster
       targetPort: 9000 # - the container port to send requests to
   selector:
-    app: web
+    app.kubernetes.io/name: rating-producer
