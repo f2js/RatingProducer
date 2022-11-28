@@ -10,3 +10,6 @@ spec:
       image: f2js/rating-producer
       ports:
         - containerPort: 9000
+      env:
+        - name: CLUSTER_IP
+          value: ${CLUSTER_IP}
