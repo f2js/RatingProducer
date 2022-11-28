@@ -13,3 +13,7 @@ spec:
       env:
         - name: CLUSTER_IP
           value: ${CLUSTER_IP}
+      hostAliases:
+        - ip: ${CLUSTER_IP}
+          hostnames:
+            - "kafka-broker"
