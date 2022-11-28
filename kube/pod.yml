@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: rating-producer
   labels:
-    app: web
+    app.kubernetes.io/name: rating-producer
 spec:
   containers:
     - name: test-end
