@@ -24,6 +24,6 @@ There are different ways of running the program:
 3. Take it all the way to Kubernetes!
 
 When you have run the program, you can send a message with "IP"/kakfa/rate/{rating}
-This message is produced by the [ProducerService](https://github.com/f2js/RatingProducer/blob/main/src/main/java/dk/f2js/ratingproducer/producer/ProducerService.java), and consumed with the [ConsumerService.java](https://github.com/f2js/RatingProducer/blob/main/src/main/java/dk/f2js/ratingproducer/consumer/ConsumerService.java). 
+This message is produced by the [ProducerService.java](https://github.com/f2js/RatingProducer/blob/main/src/main/java/dk/f2js/ratingproducer/producer/ProducerService.java), and consumed with the [ConsumerService.java](https://github.com/f2js/RatingProducer/blob/main/src/main/java/dk/f2js/ratingproducer/consumer/ConsumerService.java). 
 
 Now, kafka can handle a data stream of ratings, and consume them properly!
