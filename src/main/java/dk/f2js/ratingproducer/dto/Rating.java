@@ -13,15 +13,17 @@ public class Rating {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public Integer getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
-        this.rating = rating;
+
+    @Override
+    public String toString() {
+        return "Rating{" +
+                "userId='" + userId + '\'' +
+                ", rating=" + rating +
+                '}';
     }
 }

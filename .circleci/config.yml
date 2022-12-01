@@ -30,6 +30,9 @@ jobs:
             docker tag $IMAGE_NAME:latest $IMAGE_NAME:$CIRCLE_SHA1
             docker push $IMAGE_NAME:latest
             docker push $IMAGE_NAME:$CIRCLE_SHA1
+      - run:
+          name: Create kafka for test
+          command: docker-compose up -d
   deploy:
     docker:
       - image: circleci/buildpack-deps:bullseye
