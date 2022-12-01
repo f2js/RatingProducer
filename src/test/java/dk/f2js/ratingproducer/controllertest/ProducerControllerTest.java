@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dk.f2js.ratingproducer.RatingProducerApplication;
 import dk.f2js.ratingproducer.dto.Rating;
 import jakarta.servlet.ServletException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ProducerControllerTest {
 
-
     @Autowired
     private MockMvc mock;
-
 
 
     @Test
