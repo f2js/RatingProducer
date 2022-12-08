@@ -29,6 +29,7 @@ public class ProducerService {
             logger.info("### Producer sends rating [{}]", rating);
             template.flush();
         } else {
+            logger.warn("Invalid rating, with rating [{}]", rating);
             throw new RuntimeException("Invalid rating");
         }
     }
