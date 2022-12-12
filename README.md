@@ -12,6 +12,10 @@ A producer written in Java, for producing rating event to Kafka.
 
 ### POST /kakfa/rate/{rating}
 Gets all orders for a given customer. Does not fetch orderlines.
+body:
+ - rating: "Integer between 1 to 10"
+ - userId: Id of user
+
 
  #### Response:
  - 200 OK: Rating published: {rating}
