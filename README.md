@@ -14,7 +14,7 @@ A producer written in Java, for producing rating event to Kafka.
 Gets all orders for a given customer. Does not fetch orderlines.
 
 #### body:
- - rating: "Integer between 1 to 10"
+ - rating: Integer between 1 to 10
  - userId: Id of user
 
 
