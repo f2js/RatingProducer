@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rating-producer
+  labels:
+    app.kubernetes.io/name: cust-rating-producer
+spec:
+  # modify replicas according to your case
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cust-rating-producer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cust-rating-producer
+    spec:
+      containers:
+        - name: rating-container-replicaset
+          image: f2js/rating-producer
