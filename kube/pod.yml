@@ -5,9 +5,8 @@ metadata:
   labels:
     app.kubernetes.io/name: cust-rating-producer
 spec:
-  replicas: 2
   containers:
-    - name: test-end
+    - name: rating-container
       image: f2js/rating-producer
       ports:
         - containerPort: 9000
