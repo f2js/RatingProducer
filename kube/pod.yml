@@ -5,6 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: cust-rating-producer
 spec:
+  replicas: 2
   containers:
     - name: test-end
       image: f2js/rating-producer
