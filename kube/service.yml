@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cust-rating-producer-service
+  name: rating-producer-service
   namespace: default
   labels:
     app: web
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - nodePort: 0 # - a static port assigned on each the node
       port: 9000 # - port exposed internally in the cluster
