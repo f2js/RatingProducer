@@ -34,6 +34,13 @@ class ProducerServiceTest {
 	}
 
 	@Test
+	public void testValidIdAndRating() {
+		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 8);
+		serviceMock.sendRating(rating, template);
+		verify(serviceMock, times(1)).sendRating(rating, template);
+	}
+
+	@Test
 	public void testRatingTooHigh() {
 		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 11);
 		Exception exception = assertThrows(RuntimeException.class, () -> {
