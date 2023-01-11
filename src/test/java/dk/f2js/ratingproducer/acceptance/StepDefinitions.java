@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.mockito.Mock;
+import org.springframework.kafka.core.KafkaTemplate;
 
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
@@ -15,6 +16,10 @@ public class StepDefinitions {
 
     @Mock
     ProducerService serviceMock = mock(ProducerService.class);
+
+    @Mock
+    KafkaTemplate<String, String> template = mock(KafkaTemplate.class);
+
     Rating rating;
 
     @Given("^a rating of (\\d+) out of (\\d+) is rated by a user$")
@@ -24,13 +29,13 @@ public class StepDefinitions {
 
     @When("^a post request is sent with rating in the body$")
     public void aPostRequestIsSentWithRatingInTheBody() {
-        doNothing().when(serviceMock).sendRating(rating);
-        serviceMock.sendRating(rating);
+        doNothing().when(serviceMock).sendRating(rating, template);
+        serviceMock.sendRating(rating, template);
     }
 
     @Then("^a kafka event is produced$")
     public void aKafkaEventIsProduced() {
-        verify(serviceMock, times(1)).sendRating(rating);
+        verify(serviceMock, times(1)).sendRating(rating, template);
     }
 
 

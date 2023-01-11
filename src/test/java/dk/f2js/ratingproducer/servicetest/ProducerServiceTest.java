@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.kafka.core.KafkaTemplate;
+
 import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 
@@ -16,6 +18,9 @@ class ProducerServiceTest {
 	ProducerService serviceMock = new ProducerService();
 	ProducerService service = new ProducerService();
 
+	@Mock
+	KafkaTemplate<String, String> template = mock(KafkaTemplate.class);
+
 	@Test
 	void contextLoads() {
 	}
@@ -23,16 +28,16 @@ class ProducerServiceTest {
 	@Test
 	public void testVerifyMock() {
 		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 8);
-		doNothing().when(serviceMock).sendRating(rating);
-		serviceMock.sendRating(rating);
-		verify(serviceMock, times(1)).sendRating(rating);
+		doNothing().when(serviceMock).sendRating(rating, template);
+		serviceMock.sendRating(rating, template);
+		verify(serviceMock, times(1)).sendRating(rating, template);
 	}
 
 	@Test
 	public void testRatingTooHigh() {
 		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 11);
 		Exception exception = assertThrows(RuntimeException.class, () -> {
-			service.sendRating(rating);
+			service.sendRating(rating, template);
 		});
 		String expectedMessage = "Invalid rating";
 		String actualMessage = exception.getMessage();
@@ -43,7 +48,7 @@ class ProducerServiceTest {
 	public void testRatingTooLow() {
 		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 0);
 		Exception exception = assertThrows(RuntimeException.class, () -> {
-			service.sendRating(rating);
+			service.sendRating(rating, template);
 		});
 		String expectedMessage = "Invalid rating";
 		String actualMessage = exception.getMessage();
@@ -54,7 +59,7 @@ class ProducerServiceTest {
 	public void testRatingInvalidId() {
 		Rating rating = new Rating("4ecc05e55dd98a436ddcc47cERROR", 8);
 		Exception exception = assertThrows(RuntimeException.class, () -> {
-			service.sendRating(rating);
+			service.sendRating(rating, template);
 		});
 		String expectedMessage = "Invalid rating";
 		String actualMessage = exception.getMessage();
@@ -65,7 +70,7 @@ class ProducerServiceTest {
 	public void testRatingInvalidSymbols() {
 		Rating rating = new Rating("4ecc05e55dd98a436ddcc4<>", 8);
 		Exception exception = assertThrows(RuntimeException.class, () -> {
-			service.sendRating(rating);
+			service.sendRating(rating, template);
 		});
 		String expectedMessage = "Invalid rating";
 		String actualMessage = exception.getMessage();

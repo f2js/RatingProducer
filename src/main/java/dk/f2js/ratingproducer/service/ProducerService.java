@@ -18,10 +18,7 @@ public class ProducerService {
     private static final Gson gson = new Gson();
     private final Pattern pattern = Pattern.compile("^[a-fA-F0-9]{24}$");
 
-    @Autowired
-    private KafkaTemplate<String, String> template;
-
-    public void sendRating(Rating rating) {
+    public void sendRating(Rating rating, KafkaTemplate<String, String> template) {
         Matcher matcher = pattern.matcher(rating.getUserId());
         if (rating.getRating() >= 1 && rating.getRating() <= 10 && matcher.find()) {
             String result = gson.toJson(rating);
