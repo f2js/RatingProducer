@@ -35,7 +35,7 @@ class ProducerServiceTest {
 
 	@Test
 	public void testValidIdAndRating() {
-		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 8);
+		Rating rating = new Rating("4ecc05e55dd98a436ddcc47c", 9);
 		serviceMock.sendRating(rating, template);
 		verify(serviceMock, times(1)).sendRating(rating, template);
 	}
